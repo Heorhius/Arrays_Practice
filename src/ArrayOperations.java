@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ArrayOperations {
 
     public static int[] sortArrayWithUniqueValues(int[] initialArray) {
@@ -47,10 +49,31 @@ public class ArrayOperations {
                 counter++;
             }
         }
+
         int temp = array[kernel];
         array[kernel] = array[counter];
         array[counter] = temp;
 
         return counter;
+    }
+
+    public static int[][] transposeArray(int[][] originalArray) {
+        int[][]  transposedArray = new int[originalArray[0].length][originalArray.length];
+        for (int i = 0; i < originalArray[0].length; i++) {
+            for (int j = 0; j < originalArray.length; j++) {
+                transposedArray[i][j] = originalArray[j][i];
+            }
+        }
+        return transposedArray;
+    }
+
+    public static int getMissingNumber(int[] array) {
+        Arrays.sort(array);
+        int expectedValue = array[0];
+        for (int arrayValue : array) {
+            if (arrayValue != expectedValue) return expectedValue;
+            expectedValue++;
+        }
+        return -1;
     }
 }
